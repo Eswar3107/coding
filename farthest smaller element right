@@ -1,0 +1,26 @@
+vector<int> farNumber(int n,vector<int> arr){
+        //code here
+        vector<int>min_suff(n);
+        vector<int>a;
+        min_suff[n-1]=arr[n-1];
+        for(int i=n-2;i>=0;i--){
+            min_suff[i]=min(arr[i],min_suff[i+1]);
+        }
+        for(int i=0;i<n;i++){
+            int res=-1;
+            int low=i+1,high=n-1,mid;
+            while(low<=high){
+                 mid=(low+high)/2;
+                 if(min_suff[mid]<arr[i]){
+                     res=mid;
+                     low=mid+1;
+                 }
+                 else{
+                     high=mid-1;
+                 }
+            }
+            a.push_back(res);
+        }
+        return a;
+        
+    }
