@@ -1,0 +1,23 @@
+ int count(int mid,int n,int m,int k){
+        int c=0;
+        for(int i=1;i<=m;i++){
+            c+=min(mid/i,n);                   //divding number with a num gives how many numbers are less than number in num tabel
+        }
+        return c>=k;
+    }
+    int KthSmallest(int m, int n, int k) {
+        //Write your code here
+        int low=1,high=m*n,mid,res=-1;
+        while(low<=high){
+            mid=(low+high)/2;
+            if (count(mid,n,m,k)){
+                
+                high=mid-1;
+                res=mid;
+            }
+            else{
+                low=mid+1;
+            }
+        }
+        return res;
+    }
