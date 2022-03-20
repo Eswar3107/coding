@@ -1,0 +1,13 @@
+ int hammingDistance(int x, int y) {
+        int res = x ^ y;                       As we can see, XOR result is "1" only when there is a difference in bit for both inputs. This goes exactly with what our problem asked for.
+                                                Next we just need to count the number of differences.
+        int ans = 0;
+        
+        for(int i=0; i<32; ++i) {
+            if ( (1<<i) & res ) {            As an int is 32 bit long, we just loop through each bit and check if that is a "1".And if so, we increment our ans.
+                ++ans;
+            }
+        }
+        
+        return ans;
+    }
